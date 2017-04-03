@@ -43,6 +43,10 @@ class BuffCurl {
         set_time_limit($this->max_time);
     }
 
+    /**
+     * 开始下载接口
+     * @return null
+     */
     public
             function start() {
         $mh = curl_multi_init();
@@ -149,6 +153,12 @@ class BuffCurl {
         return $allResultUrl;
     }
 
+    /**
+     * 检查文件是否已存在,存在就加上_1 _2 _3 _4...
+     * @param string $fileName 文件名
+     * @param int $num  文件重名后添加的数字
+     * @return null
+     */
     protected
             function buffCheckFileName(&$fileName, $num = 1) {
         $num_str = '_' . $num;
@@ -162,6 +172,10 @@ class BuffCurl {
         }
     }
 
+    /**
+     * 保存资源用完删除资源
+     * @param mixed $res
+     */
     protected
             function buffSavaFile($res) {
         for ($i = 0; $i < count($res); $i++) {
@@ -190,6 +204,11 @@ class BuffCurl {
         unset($res);
     }
 
+    /**
+     * 获取每一个curl中的内容并写入到一个数组中
+     * @param resource $ch
+     * @return 资源数组
+     */
     protected
             function buffGetCurlResult($ch) {
         foreach ($ch as $k => $v) {
@@ -207,6 +226,12 @@ class BuffCurl {
         return $res;
     }
 
+    /**
+     * 
+     * @param resource curl_multi资源
+     * @param array $ch curl资源数组
+     * @return 返回资源句柄数组
+     */
     protected
             function buffCurlMultiExec($mh, $ch) {
 //        $nowtime = microtime(1);
@@ -237,6 +262,11 @@ class BuffCurl {
         return $result;
     }
 
+    /**
+     * 初始化curl句柄并添加到curl_multi句柄
+     * @param resource curl_multi资源
+     * @param array $ch curl资源数组
+     */
     protected
             function buffCurlMultiInit($mh, &$ch) {
 //        $nowtime = microtime(1);
