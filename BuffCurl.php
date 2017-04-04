@@ -46,7 +46,7 @@ class BuffCurl {
         }
         set_time_limit($this->max_time);
     }
-/**
+    /**
  * 开始下载入口
  * @return null
  */
