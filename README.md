@@ -29,7 +29,8 @@
 文件中的域名我是已经改过了,那几个字母被我打乱了,如果你们猜到了真实域名并且去下载了几十个g. 对不起我不认识你
 
 图片为运行效果<br/>
-![pic](https://github.com/buffge/PhpTest/blob/test/public/images/pic_buffge_2017-02-19-18_30_33.jpg "脚本运行效果")
+![pic](https://github.com/buffge/buffCurl/blob/master/2.gif "脚本运行效果")
+![pic](https://github.com/buffge/buffCurl/blob/master/%E6%80%BB%E6%97%B6%E9%97%B4.png "总时间和总下载数")
 
 这个是配置数组<br/>
 $data3 = [
