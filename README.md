@@ -30,6 +30,8 @@
 
 图片为运行效果<br/>
 ![pic](https://github.com/buffge/buffCurl/blob/master/2.gif "脚本运行效果")<br/>
+
+
 ![pic](https://github.com/buffge/buffCurl/blob/master/%E6%80%BB%E6%97%B6%E9%97%B4.png "总时间和总下载数")
 
 这个是配置数组<br/>
