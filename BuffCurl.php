@@ -101,7 +101,7 @@ class BuffCurl {
     }
 
     /**
-     * 
+     * 为页面内容执行正则搜素和替换
      * @param mixed $res  curl获取的结果,包含页面内容和页面url的数组或者错误代码字符串
      * @return mixed      
      *      0 :未成功匹配,请检查正则表达式
