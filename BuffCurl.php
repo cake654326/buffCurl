@@ -315,6 +315,7 @@ $data0 = [
     'folderName' => '野生动物',
     'step' => 0,
     "down_timeout" => 30,
+    'min_size_file' => 10240
     ];
 $data1 = [
     'entrance_url' => 'http://www.yksvi.com/download_pic.html?picurl=/img/tupian/pic/201007/13/laohu-010.jpg',
@@ -334,6 +335,7 @@ $data1 = [
                 ]',
     "url_num" => 1,
     "down_timeout" => 30,
+    'min_size_file' => 10240
 ];
 $data2 = [
     'entrance_url' => 'http://www.yksvi.com/tupian/laohu_v24/pic_574.html',
@@ -362,6 +364,7 @@ $data2 = [
                 ]',
     "url_num" => 1,
     "down_timeout" => 30,
+    'min_size_file' => 10240
 ];
 $data3 = [
     'entrance_url' => 'http://www.yksvi.com/tupian/yeshengdongwu_t81/index.html',
@@ -402,7 +405,8 @@ $data3 = [
     "url_connect" => '_',
     "down_timeout" => 30,
     'addSiteReplace' => ['index', 'index'],
-    'current_connect' => 30
+    'current_connect' => 30,
+    'min_size_file' => 10240
 ];
 $nowtime = microtime(1);
 echo "运行开始现在时间" . $nowtime . "\n";
