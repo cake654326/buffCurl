@@ -308,7 +308,7 @@ class BuffCurl {
     }
 
 }
-
+//这里放了4个data 就是demo用的,分别是从step 0-3 四层测试下载.以及不同的regexp
 $data0 = [
     'entrance_url' => 'http://img.yksvi.com/img/tupian/pic/201007/13/laohu-010.jpg',
     'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.yksvi.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.yksvi.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
@@ -413,5 +413,5 @@ echo "运行开始现在时间" . $nowtime . "\n";
 $down = new BuffCurl($data);
 $down->start();
 $aftertime = microtime(1);
-echo "允许完毕现在时间 : ", $aftertime . "\n";
+echo "运行完毕现在时间 : ", $aftertime . "\n";
 echo "共用时  ", $aftertime - $nowtime . "秒\n";
