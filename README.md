@@ -1,7 +1,7 @@
 # BuffCurl
-爬虫下载图片类
+<h1>爬虫下载图片类</h1>
 
-爬虫思路 :<br/>
+<h2>爬虫思路 :<h2><br/>
 
     1.进入一个网站的栏目页.
 
@@ -37,7 +37,17 @@
 
 
 ![pic](https://github.com/buffge/buffCurl/blob/master/%E6%80%BB%E6%97%B6%E9%97%B4.png "总时间和总下载数")
-
+<h3>配置数组写法</h3>
+    入口页面这个不用我讲
+    1.step 就是从入口页面到图片url所要点击的次数
+    2.addSiteReplace 和 url_connect 这两个是有关的,有的网站不一定是用index-1 -2这样的样式.比如我刚刚down的一个站
+    是用phpto/0/1.html phpto/0/2.html 这样的.我们就可以把 addSiteReplace =>["photo","photo/0/"] 因为入口页面没有/0/ .
+    所以前者写photo 后面再改成photo/0/. 这时候 url_connect就设置成''空字符串就行.
+    3.主要讲的是regexp 进入第一页首先很早列表在哪一个div中 第一步搜索正则把搜索范围定在一个class或者id中,第二部搜索
+    搜索div中的href链接.这时候有的网站是用绝对路径比如http://www.qq.com/pic/a.html  那么就不要replace .如果是/pic/a.html 
+    那我们就添加一个replace项 将/pic 替换成http://www.qq.com/pic  以此类推下一层也这样写
+    <span style="color:red">要注意的是转义的字符要加\ 如果json和php都要转义的那么要加2个\\ 比如[\\\S\\\s]<br/></span>
+    <span style="color:red">如果正则中有\/ 可以把定界符设置为~~<br/></span>
 这个是配置数组<br/>
 $data3 = [
     'entrance_url' => 'http://www.yksvi.com/tupian/yeshengdongwu_t81/index.html', //入口页面 必须要写index.html 或者list.html 等全路径
