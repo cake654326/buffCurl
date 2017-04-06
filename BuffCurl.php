@@ -274,7 +274,7 @@ class BuffCurl {
      */
     protected
             function buffSetCurlOpt($ch, $i) {
-        $ip = rand(58, 220) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(0, 255);
+        $ip = mt_rand(58, 220) . '.' . mt_rand(0, 255) . '.' . mt_rand(0, 255) . '.' . mt_rand(0, 255);
         $headerArr = ['X-FORWARDED-FOR:' . $ip, 'CLIENT-IP:' . $ip];
         $url = is_array($this->entrance_url) ? $this->entrance_url[$i] : $this->buffAddThisSite($this->entrance_url, $i);
         $opt = [
