@@ -244,6 +244,8 @@ class BuffCurl {
                     $now_curl_handle++;
                 }
                 curl_multi_remove_handle($mh, $info['handle']);
+            }else{
+                usleep(100);
             }
         }
         while ($active && $mrc == CURLM_OK || $msgq > 0);
@@ -274,7 +276,7 @@ class BuffCurl {
      */
     protected
             function buffSetCurlOpt($ch, $i) {
-        $ip = rand(58, 220) . '.' . rand(0, 255) . '.' . rand(0, 255) . '.' . rand(0, 255);
+        $ip = mt_rand(58, 220) . '.' . mt_rand(0, 255) . '.' . mt_rand(0, 255) . '.' . mt_rand(0, 255);
         $headerArr = ['X-FORWARDED-FOR:' . $ip, 'CLIENT-IP:' . $ip];
         $url = is_array($this->entrance_url) ? $this->entrance_url[$i] : $this->buffAddThisSite($this->entrance_url, $i);
         $opt = [
@@ -310,16 +312,16 @@ class BuffCurl {
 }
 //这里放了4个data 就是demo用的,分别是从step 0-3 四层测试下载.以及不同的regexp
 $data0 = [
-    'entrance_url' => 'http://img.yksvi.com/img/tupian/pic/201007/13/laohu-010.jpg',
-    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.yksvi.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.yksvi.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
+    'entrance_url' => 'http://img.ivsky.com/img/tupian/pic/201007/13/laohu-010.jpg',
+    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.ivsky.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.ivsky.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
     'folderName' => '野生动物',
     'step' => 0,
     "down_timeout" => 30,
     'min_size_file' => 10240
     ];
 $data1 = [
-    'entrance_url' => 'http://www.yksvi.com/download_pic.html?picurl=/img/tupian/pic/201007/13/laohu-010.jpg',
-    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.yksvi.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.yksvi.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
+    'entrance_url' => 'http://www.ivsky.com/download_pic.html?picurl=/img/tupian/pic/201007/13/laohu-010.jpg',
+    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.ivsky.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.ivsky.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
     'folderName' => '野生动物',
     'step' => 1,
     'regexp' => '[
@@ -328,8 +330,8 @@ $data1 = [
                        
                         ],
                         "replace": [
-                           ["http:\/\/www.yksvi.com\/download_pic.html?picurl="],
-                           ["http:\/\/img.yksvi.com"]
+                           ["http:\/\/www.ivsky.com\/download_pic.html?picurl="],
+                           ["http:\/\/img.ivsky.com"]
                         ]
                     }
                 ]',
@@ -338,8 +340,8 @@ $data1 = [
     'min_size_file' => 10240
 ];
 $data2 = [
-    'entrance_url' => 'http://www.yksvi.com/tupian/laohu_v24/pic_574.html',
-    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.yksvi.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.yksvi.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
+    'entrance_url' => 'http://www.ivsky.com/tupian/laohu_v24/pic_574.html',
+    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.ivsky.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.ivsky.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
     'folderName' => '野生动物',
     'step' => 2,
     'regexp' => '[
@@ -348,8 +350,8 @@ $data2 = [
                        
                         ],
                         "replace": [
-                           ["http:\/\/www.yksvi.com\/download_pic.html?picurl="],
-                           ["http:\/\/img.yksvi.com"]
+                           ["http:\/\/www.ivsky.com\/download_pic.html?picurl="],
+                           ["http:\/\/img.ivsky.com"]
                         ]
                     },
                     {
@@ -357,8 +359,8 @@ $data2 = [
                          "/(?<=id=\"imgis\" src=[\'\"])[^\'\"]*jpg(?=[\'\"] alt)/"
                         ],
                         "replace": [
-                            ["http:\/\/img.yksvi.com","\/img\/tupian\/pre"],
-                             ["http:\/\/www.yksvi.com","\/download_pic.html?picurl=\/img\/tupian\/pic"]
+                            ["http:\/\/img.ivsky.com","\/img\/tupian\/pre"],
+                             ["http:\/\/www.ivsky.com","\/download_pic.html?picurl=\/img\/tupian\/pic"]
                         ]
                     }
                 ]',
@@ -367,8 +369,8 @@ $data2 = [
     'min_size_file' => 10240
 ];
 $data3 = [
-    'entrance_url' => 'http://www.yksvi.com/tupian/yeshengdongwu_t81/index.html',
-    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.yksvi.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.yksvi.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
+    'entrance_url' => 'http://www.ivsky.com/tupian/yeshengdongwu_t81/index.html',
+    'cookie' => 'UM_distinctid=15b106fd471d3e-0bd4ac226a5ba8-79482645-1fa400-15b106fd472a0a; CNZZDATA1259295795=1187515984-1491099760-http%253A%252F%252Fwww.ivsky.com%252F%7C1491099760; CNZZDATA1254368934=771597025-1490637474-http%253A%252F%252Fwww.ivsky.com%252F%7C1491200194; CNZZDATA87348=cnzz_eid%3D330874521-1490626948-null%26ntime%3D1491258755; Hm_lvt_862071acf8e9faf43a13fd4ea795ff8c=1491024144,1491063837,1491204750,1491260529; Hm_lpvt_862071acf8e9faf43a13fd4ea795ff8c=1491260529; CNZZDATA1629164=cnzz_eid%3D1938686851-1490627119-null%26ntime%3D1491256536',
     'folderName' => '野生动物',
     'step' => 3,
     'regexp' => '[
@@ -377,8 +379,8 @@ $data3 = [
                        
                         ],
                         "replace": [
-                           ["http:\/\/www.yksvi.com\/download_pic.html?picurl="],
-                           ["http:\/\/img.yksvi.com"]
+                           ["http:\/\/www.ivsky.com\/download_pic.html?picurl="],
+                           ["http:\/\/img.ivsky.com"]
                         ]
                     },
                     {
@@ -386,8 +388,8 @@ $data3 = [
                          "/(?<=id=\"imgis\" src=[\'\"])[^\'\"]*jpg(?=[\'\"] alt)/"
                         ],
                         "replace": [
-                            ["http:\/\/img.yksvi.com","\/img\/tupian\/pre"],
-                             ["http:\/\/www.yksvi.com","\/download_pic.html?picurl=\/img\/tupian\/pic"]
+                            ["http:\/\/img.ivsky.com","\/img\/tupian\/pre"],
+                             ["http:\/\/www.ivsky.com","\/download_pic.html?picurl=\/img\/tupian\/pic"]
                         ]
                     },
                     {
@@ -397,7 +399,7 @@ $data3 = [
                         ],
                         "replace": [
                             ["\/tupian"],
-                            ["http:\/\/www.yksvi.com\/tupian"]
+                            ["http:\/\/www.ivsky.com\/tupian"]
                         ]
                     }
                 ]',
@@ -410,7 +412,7 @@ $data3 = [
 ];
 $nowtime = microtime(1);
 echo "运行开始现在时间" . $nowtime . "\n";
-$down = new BuffCurl($data);
+$down = new BuffCurl($data3);
 $down->start();
 $aftertime = microtime(1);
 echo "运行完毕现在时间 : ", $aftertime . "\n";
