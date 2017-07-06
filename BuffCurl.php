@@ -245,7 +245,7 @@ class BuffCurl {
                 }
                 curl_multi_remove_handle($mh, $info['handle']);
             }else{
-                usleep(100);
+                usleep(1000);
             }
         }
         while ($active && $mrc == CURLM_OK || $msgq > 0);
